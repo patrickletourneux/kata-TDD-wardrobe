@@ -1,8 +1,8 @@
-const ToRename = require('./ToRename');
+const Wardrobe = require('./Wardrobe');
 
-describe('ToRename class', () => {
+describe('Wardrobe class', () => {
     
-    const instance = new ToRename();
+    const instance = new Wardrobe();
     
     beforeEach(() => {
         console.log('beforeEach');

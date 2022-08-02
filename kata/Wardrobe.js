@@ -1,8 +1,8 @@
-class ToRename {
+class Wardrobe {
     log(){
         console.log('OK class importée')
         return 'OK'
     }
 }
 
-module.exports = ToRename;
+module.exports = Wardrobe;
