@@ -1,19 +1,20 @@
 class Wardrobe {
     wall
     sizes = [50, 75, 100, 120]
+    allCombinations = [];
+    allCombinationsSumMatchWall = [];
     constructor(wall){
         this.wall = wall;
     }
     combinationsOK(){
-        console.log('OK class importée');
-        // return [];
-        return [[50,50,50,50,50]];
+        this.calculAllCombinations();
+        this.calculCombinationSumMatchWall();
+        return this.allCombinationsSumMatchWall;
     }
     wallValue(){
         return this.wall;
     }
     calculAllCombinations(){
-        const arrayCombination = []
         for (let a=0;a<=5;a++){
             for (let b=0;b<=5;b++){
                 for (let c=0;c<=5;c++){
@@ -31,19 +32,27 @@ class Wardrobe {
                         for (let dd=d;dd>0;dd--){
                             combination.push(this.sizes[3]);
                         }
-                        arrayCombination.push(combination);
+                        this.allCombinations.push(combination);
 
                     }
                 }
             }
         }
-        console.log('arrayCombination.length ',arrayCombination.length);
-        return arrayCombination
+        return this.allCombinations
     }
-    calculCombinationMatchWall(){
-        const arrayCombination = this.calculAllCombinations() ;
-        return [[50,50,50,50,50]];
+    calculCombinationSumMatchWall(){
+        this.allCombinationsSumMatchWall = this.allCombinations.filter(item =>{
+                return this.sumArray(item) === this.wall
+            })
+        return this.allCombinationsSumMatchWall;
     }
+    sumArray(array) {
+        let sum = 0;
+        array.forEach(item => {
+          sum += item;
+        });    
+        return sum;
+      }
 }
 
 module.exports = Wardrobe;
